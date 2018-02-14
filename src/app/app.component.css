@@ -1,0 +1,14 @@
+.dropdown-menu{
+    background-color: orange;
+    color:white !important;
+}
+.dropdown-item{
+}
+
+.dropdown-item:hover{
+    background-color:lightsalmon !important;
+    color:blue !important;
+}
+.divider {
+    background-color:black !important;
+}

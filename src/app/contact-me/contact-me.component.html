@@ -1,0 +1,38 @@
+<!--Contact Form-->
+<form id="contactForm">
+
+  <p class="h5 text-center mb-4">Send Me A Message</p>
+
+  <div class="md-form">
+      <i class="fa fa-user prefix grey-text"></i>
+      <input [(ngModel)]= "userInfo.name" type="text" id="form3" name="userName" class="form-control" mdbActive>
+      <label for="form3">Your name</label>
+  </div>
+
+  <div class="md-form">
+      <i class="fa fa-envelope prefix grey-text"></i>
+      <input [(ngModel)]= "userInfo.email" type="email" id="form2" class="form-control" name="email" mdbActive>
+      <label for="form2">Your email{{userInfo.email}}</label>
+  </div>
+
+  <div class="md-form">
+      <i class="fa fa-tag prefix grey-text"></i>
+      <input type="text" [(ngModel)]= "userInfo.subject" id="form32" class="form-control" name="Subject" mdbActive>
+      <label for="form34">Subject</label>
+  </div>
+
+  <div class="md-form">
+      <i class="fa fa-pencil prefix grey-text"></i>
+      <textarea type="text" id="form8" [(ngModel)]= "userInfo.message" class="md-textarea" name="message" style="height: 100px" mdbActive></textarea>
+      <label for="form8">Your message</label>
+  </div>
+
+  <h3>{{userInfo.message}}</h3>
+
+  <div class="text-center">
+      <button class="btn btn-unique waves-light" (click)="onSubmit()" mdbRippleRadius> Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+  </div>
+
+</form>
+<!--Contact Form-->
+      
