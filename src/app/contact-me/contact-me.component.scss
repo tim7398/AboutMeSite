@@ -1,9 +1,24 @@
 .md-form{
-    width:50%;
-    margin-left:25%;
-    margin-right:25%;
+    width:80%;
+    margin-left: 10%;
 }
 
 #contactForm{
     margin-top: 5%;
+    border-width:thin;
+    border-style: solid;
+    margin-left:25%;
+    margin-right:25%;
+    border-color: lightgrey;
+    padding-bottom:2%;
+    
+}
+
+#form-content{
+    margin-top:5%;
+    
+}
+
+.h5{
+    color:orange;
 }
