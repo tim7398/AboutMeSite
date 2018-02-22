@@ -7,30 +7,30 @@
 
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item ">
               <a class="nav-link waves-light" mdbRippleRadius>Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown" dropdown>
-            <a dropdownToggle mdbRippleRadius type="button" class="nav-link waves-light" mdbRippleRadius>
+            <a dropdownToggle mdbRippleRadius  class="nav-link waves-light" mdbRippleRadius>
            About Me <span class="caret"></span></a>
            <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" mdbRippleRadius href="#">Who Am I</a>
+            <a class="dropdown-item waves-light" mdbRippleRadius href="/aboutme">Who Am I</a>
             <a class="dropdown-item waves-light" mdbRippleRadius href="#">Travels</a>
         </div>
     </li>
           <!-- Dropdown -->
           <li class="nav-item dropdown" dropdown>
-              <a dropdownToggle mdbRippleRadius type="button" class="nav-link waves-light" mdbRippleRadius>
+              <a dropdownToggle mdbRippleRadius  class="nav-link waves-light" mdbRippleRadius>
               Experience<span class="caret"></span></a>
               <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
                   <a class="dropdown-item waves-light" mdbRippleRadius href="#">Employment History</a>
-                  <a class="dropdown-item waves-light" mdbRippleRadius href="#">What Do I Know?</a>
-                  <div class="divider dropdown-divider black"></div>
+                  <a class="dropdown-item waves-light" mdbRippleRadius href="/pastproject">Past Projects</a>
+                  <div class="divider dropdown-divider"></div>
                   <a class="dropdown-item waves-light" mdbRippleRadius href="#">GitHub</a>
               </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-light" mdbRippleRadius href="/contactMe"> Contact Me</a>
+            <a class="nav-link waves-light" mdbRippleRadius href="/contactme"> Contact Me</a>
         </li>
 
       </ul>
@@ -44,5 +44,13 @@
   <!-- Collapsible content -->
 
 </mdb-navbar>
+
+<footer class="page-footer center-on-small-only">
+        <div class="footer-copyright">
+                <div class="container-fluid">
+                    © 2018 Copyright: Tim Qin
+                </div>
+            </div>
+</footer>
 
 <router-outlet></router-outlet>

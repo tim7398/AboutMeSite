@@ -74,7 +74,7 @@ export class ContactMeComponent implements OnInit {
         title: 'Message Sent',
         msg: 'I have received the message. Expect a response within a day.',
         showClose:true,
-        timeout: 5000,
+        timeout: 500000,
         theme:'material',
         success: true
       }
@@ -88,23 +88,13 @@ export class ContactMeComponent implements OnInit {
         title: 'Oh No!',
         msg: 'For some reason the message did not send. Email me at tim7398@gmail.com instead. Sorry!',
         showClose:true,
-        timeout: 5000,
+        timeout: 500000,
         theme:'material',
         success: false
       }
       this.newToast(Alert);
       console.log(err);
     };
-
-    Alert ={
-      title: 'Oh No!',
-      msg: 'For some reason the message did not send. Email me at tim7398@gmail.com instead. Sorry!',
-      showClose:true,
-      timeout: 500000000000,
-      theme:'material',
-      success: false
-    }
-    this.newToast(Alert);
     
   }
 

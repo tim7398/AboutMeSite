@@ -1,0 +1,31 @@
+.dropdown-menu{
+    background-color: orange;
+    color:white !important;
+}
+
+body{
+    margin-bottom:60px;
+}
+
+.dropdown-item:hover{
+    background-color:rgb(255, 136, 0) !important;
+    color:blue !important;
+}
+.divider {
+    background-color:black !important;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    line-height: 60px;
+
+}
+
+.footer-copyright{
+    background-color: rgba(0,0,0,0) !important;
+    color:gray !important;
+}

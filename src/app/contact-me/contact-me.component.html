@@ -9,7 +9,7 @@
         <p class="h5 text-center mb-4">Send Me A Message</p>
   <div class="md-form">
       <i class="fa fa-user prefix orange-text"></i>
-      <input  type="text" id="form3" name="userName" class="form-control" mdbActive>
+      <input [(ngModel)]="userInfo.name" type="text" id="form3" name="userName" class="form-control" mdbActive>
       <label for="form3">Your name{{userInfo.name}}</label>
   </div>
 

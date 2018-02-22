@@ -1,0 +1,14 @@
+
+<div class = "projectList" *ngIf="data !== undefined">
+<div *ngFor="let object of data.Items">
+  <div class="card">
+      <div class="card-block">
+        <h4 class="card-title">{{object.title}}</h4>
+        <h2 class="card-text">{{object.date}}</h2>
+        <img class="card-img-top" src="https://www.cartoonbrew.com/wp-content/uploads/2014/07/overthegardenwall-promo.jpg" alt="Card image cap">
+        <p class="card-text">{{object.body}}</p>
+      </div>
+    </div>
+</div>
+</div>
+
