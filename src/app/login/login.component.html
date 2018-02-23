@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ng2-toasty@4.0.3/style.css">
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+
+
+<!-- Login form -->
+<form id = "login" *ngIf="isLogin" (ngSubmit)="onLogin()">
+    <div id="form-content">
+    <p class="h5 text-center mb-4">Sign in</p>
+
+    <div class="md-form">
+        <i class="fa fa-envelope prefix grey-text"></i>
+        <input type="text" id="defaultForm-username" class="form-control" mdbActive>
+        <label for="defaultForm-username">username</label>
+    </div>
+
+    <div class="md-form">
+        <i class="fa fa-lock prefix grey-text"></i>
+        <input type="password" id="defaultForm-pass" class="form-control" mdbActive>
+        <label for="defaultForm-pass">Your password</label>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-default waves-light" mdbRippleRadius>Login</button>
+    </div>
+    </div>
+
+</form>
+
+<!-- Login form -->
+
+<!-- register form-->
+<form id = "login" *ngIf="!isLogin" (ngSubmit)="onRegister()">
+    <div id="form-content">
+    <p class="h5 text-center mb-4">Sign Up</p>
+    <div class="md-form" >
+        <i class="fa fa-user-circle prefix grey-text"></i>
+        <input [(ngModel)]="userInfo.username" name="username" type="text" id="defaultForm-username" class="form-control" mdbActive>
+        <label for="defaultForm-username">username</label>
+    </div>
+    <!-- <div class="md-form name" >
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" id="defaultForm-fName" class="form-control" mdbActive>
+        <label for="defaultForm-fname">First Name</label>
+    </div>
+
+    <div class="md-form name">
+        <i class="fa fa-user prefix grey-text"></i>
+        <input type="text" id="defaultForm-lName" class="form-control" mdbActive>
+        <label for="defaultForm-Lname">Last Name</label>
+    </div> -->
+    
+    <div class="md-form">
+        <i class="fa fa-envelope prefix grey-text"></i>
+        <input [(ngModel)]="userInfo.email" name="email" type="text" id="defaultForm-email" class="form-control" mdbActive>
+        <label for="defaultForm-email">Your email</label>
+    </div>
+
+    <div class="md-form">
+        <i class="fa fa-lock prefix grey-text"></i>
+        <input [(ngModel)]="userInfo.company" name="company" type="text" id="defaultForm-company" class="form-control" mdbActive>
+        <label for="defaultForm-company">Company (Optional)</label>
+    </div>
+
+    <div class="md-form">
+        <i class="fa fa-lock prefix grey-text"></i>
+        <input [(ngModel)]="userInfo.password" name="password" type="password" id="defaultForm-pass" class="form-control" mdbActive>
+        <label for="defaultForm-pass">Your password</label>
+    </div>
+    <div class="md-form">
+        <i class="fa fa-lock prefix grey-text"></i>
+        <input [(ngModel)]="userInfo.confirmPW" name="confirmPW" type="password" id="defaultForm-confirmpass" class="form-control" mdbActive>
+        <label for="defaultForm-confirmpass">Confirm password</label>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-default waves-light" mdbRippleRadius>Register</button>
+    </div>
+    </div>
+
+</form>
+
+
+
+
+<!--register form -->

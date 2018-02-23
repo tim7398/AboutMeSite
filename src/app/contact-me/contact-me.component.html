@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ng2-toasty@4.0.3/style.css">
 
 <ng2-toasty [position]="'top-right'"></ng2-toasty>
-<form id="contactForm" >
+<form id="contactForm" (ngSubmit)="onSubmit()">
 
   
 <div id="form-content">
@@ -34,7 +34,7 @@
   <h3>{{userInfo.message}}</h3>
 
   <div class="text-center">
-      <button class="btn btn-unique orange waves-light" (click)="onSubmit()" mdbRippleRadius> Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+      <button type ="submit" class="btn btn-unique orange waves-light" mdbRippleRadius> Send <i class="fa fa-paper-plane-o ml-1"></i></button>
   </div>
   </div>
 

@@ -81,7 +81,7 @@ export class ContactMeComponent implements OnInit {
       this.newToast(Alert);
       this.formReset();
       return;
-    }),
+    },
     err=>{
       console.log("error in here")
       Alert ={
@@ -94,7 +94,7 @@ export class ContactMeComponent implements OnInit {
       }
       this.newToast(Alert);
       console.log(err);
-    };
+    });
     
   }
 

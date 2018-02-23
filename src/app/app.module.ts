@@ -11,11 +11,13 @@ import {ToastyModule} from 'ng2-toasty';
 import { AboutmeComponent } from './aboutme/aboutme.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PastProjectComponent } from './past-project/past-project.component';
+import { LoginComponent } from './login/login.component';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contactme', component: ContactMeComponent },
   { path: 'aboutme', component: AboutmeComponent},
-  {path:'pastproject', component:PastProjectComponent}
+  {path:'pastproject', component:PastProjectComponent},
+  {path:'login', component:LoginComponent}
 
 ];
 
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
     ContactMeComponent,
     HomeComponent,
     AboutmeComponent,
-    PastProjectComponent
+    PastProjectComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

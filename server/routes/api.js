@@ -8,21 +8,21 @@ const projectGet = require("../getData/projectGet");
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    region: "us-east-1",
-    endpoint: "https://dynamodb.us-east-1.amazonaws.com"
+    region: "us-east-1"
 });
 
 //the default get request
 router.get('/', function (req, res) {
     console.log("got in here:");
 });
+
 //get request for dynamoDB projectList content
 router.get('/getprojects', function(req, res){
     projectGet.GetProject().then(
-        function(data){
+        function(isVerify){
             console.log("The datas:", data);
             res.status(201);
-            res.json(data);
+            res.send(isVerify);
         },
         function(error){
             console.log("I got an error:", error);
@@ -31,6 +31,48 @@ router.get('/getprojects', function(req, res){
         }
     )
 });
+
+//verify the user
+router.post('/userverify', function(req, res){
+    let userInfo = {
+        username:req.body.username,
+        password:req.body.password,
+        register:req.body.register,
+        company:req.body.company,
+        email: req.body.email
+    };
+    console.log(userInfo.register);
+    if(userInfo.register){
+        projectGet.RegisterUser(AWS, userInfo).then(
+            function(data){
+                console.log("The datas:", data);
+                res.status(201);
+                res.send(data);
+            },
+            function(error){
+                console.log("I got an error:", error);
+                res.status(400);
+                res.send(error);
+            }
+        )
+    }
+    else{
+        projectGet.IsAuthenticated(AWS, userInfo).then(
+            function(data){
+                console.log("is this verified:", data);
+                res.status(201);
+                res.send(data);
+            },
+            function(error){
+                console.log("I got an error:", error);
+                res.status(400);
+                res.send(error);
+            }
+        )
+    }
+
+});
+
 //Post request to send an email 
 router.post('/email', function (req, res) {
 

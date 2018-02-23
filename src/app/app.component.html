@@ -37,9 +37,10 @@
       <!-- Links -->
 
       <!-- Search form -->
-      <form class="form-inline  waves-light" mdbRippleRadius>
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      </form>
+      
+           <lable *ngIf="!isLoggedIn"><a class="nav-link waves-light" mdbRippleRadius href="/"> Login </a></lable> 
+           <lable *ngIf="isLoggedIn"><a class="nav-link waves-light" mdbRippleRadius href="/"> Logout </a></lable> 
+       
   </links>
   <!-- Collapsible content -->
 
