@@ -17,7 +17,7 @@ function RegisterUser(AWS, userInfo) {
         //check to see if its verified before registering the username
         dynamoDB.get(getParams, function (error, data) {
             if (error) {
-                console.log("error in get item:", error);
+                console.log("error in get item:(Regist)", error);
             }
             else {
                 // checks to see if the username exists
@@ -80,6 +80,8 @@ function RegisterUser(AWS, userInfo) {
 
 // function to authenticate the users credentials 
 function IsAuthenticated(AWS, userInfo) {
+
+    console.log("USER:", userInfo);
     let dynamoDB = new AWS.DynamoDB.DocumentClient(); // gets the instance of dynamo
     let params = {
         TableName: "UserInfo",
@@ -88,10 +90,11 @@ function IsAuthenticated(AWS, userInfo) {
         }
     };
 
+    console.log("The AUth Params:", params);
     return new Promise((resolve, reject) => {
         dynamoDB.get(params, function (error, data) {
             if (error) {
-                console.log("error in get item:", error);
+                console.log("error in get item(is Auth):", error);
                 return reject(error);
             }
             else if (data.Item === undefined) {

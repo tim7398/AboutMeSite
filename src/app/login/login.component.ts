@@ -9,7 +9,7 @@ import { ToastyService, ToastyConfig, ToastOptions, ToastData } from 'ng2-toasty
 })
 export class LoginComponent implements OnInit {
 
-  isLogin: boolean = false;
+  isLogin: boolean = true;
   userInfo: any = {
     username: "",
     email: "",
@@ -51,6 +51,48 @@ export class LoginComponent implements OnInit {
 
   onLogin(): void {
 
+    const headers = new Headers();
+    let Alert;
+    headers.append('Content-Type', 'application/json; charset=utf-8');
+    const requestOptions = new RequestOptions({ headers: headers });
+    this.userInfo.register = false;
+    let response;
+
+    this.http.post('/api/userverify', JSON.stringify(this.userInfo), requestOptions)
+      .subscribe((data) => {
+        //if there was an error, display the message
+        if(data["_body"]==='true'){
+          console.log("hi")
+        Alert = {
+          title: 'Successful Login',
+          showClose: true,
+          timeout: 5000,
+          theme: 'material',
+          success: true
+        }
+
+        this.newToast(Alert);
+      }
+      else{
+        Alert = {
+          title: 'Incorrect Username or Password',
+          showClose: true,
+          timeout: 10000,
+          theme: 'material',
+          success: false
+        }
+
+        this.newToast(Alert);
+      }
+      return;
+      },
+      err => {
+
+        console.log("error on register:", err)
+        return;
+
+      });
+    
   }
 
   onRegister(): void {
@@ -60,13 +102,20 @@ export class LoginComponent implements OnInit {
     const requestOptions = new RequestOptions({ headers: headers });
     this.userInfo.register = true;
     let response;
-
+    //****** REDIRECT TO HOME PAGE WITH *****WELCOME USERNAME**** */
     this.http.post('/api/userverify', JSON.stringify(this.userInfo), requestOptions)
       .subscribe((data) => {
-        console.log("Hello", data.ok);
         //if there was an error, display the message
-        response = data.json();
+        
+        Alert = {
+          title: 'Successful Registration',
+          showClose: true,
+          timeout: 5000,
+          theme: 'material',
+          success: true
+        }
 
+        this.newToast(Alert);
         return;
       },
       err => {
