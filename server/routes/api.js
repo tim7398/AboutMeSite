@@ -3,6 +3,7 @@ const router = express.Router();
 const emailService = require('../util/email');
 const AWS = require("aws-sdk");
 const projectGet = require("../getData/projectGet");
+const projectPost = require("../getData/projectPost")
 
 // set authorization.
 AWS.config.update({
@@ -20,7 +21,7 @@ router.get('/', function (req, res) {
 router.get('/getprojects', function(req, res){
     projectGet.GetProject().then(
         function(isVerify){
-            console.log("The datas:", data);
+            console.log("The datas:", isVerify);
             res.status(201);
             res.send(isVerify);
         },
@@ -30,6 +31,18 @@ router.get('/getprojects', function(req, res){
             res.send(error);
         }
     )
+});
+
+router.post('/postprojects', function(req, res){
+    console.log("whatdafdsf")
+    projectPost.PostProject().then(function(isPosted){
+        res.status(201);
+        res.send(isPosted)
+    },
+    function(error){
+        res.status(400);
+        res.send(error)
+    });
 });
 
 //verify the user

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Http, Headers,RequestOptions} from "@angular/http";
-import {ToastyService, ToastyConfig, ToastOptions, ToastData} from 'ng2-toasty';
-
+// import {ToastyService, ToastyConfig, ToastOptions, ToastData} from 'ng2-toasty';
+import {MessageAlert} from '../util/toast'
 
 @Component({
   selector: 'app-contact-me',
@@ -16,34 +16,36 @@ export class ContactMeComponent implements OnInit {
     message:""
   }
 
-  constructor(private http:Http, private toastyService:ToastyService, private toastyConfig: ToastyConfig) { 
-    this.toastyConfig.theme= 'material';
-    this.toastyConfig.position = 'bottom-right';
+  
+
+  constructor(private http:Http, private MessagesAlert:MessageAlert) { 
+    // this.toastyConfig.theme= 'material';
+    // this.toastyConfig.position = 'bottom-right';
 
   }
-  newToast(Alert):void {
-    console.log("HELLO GOT IN HERE:");
-    let toastOptions: ToastOptions = {
-        title: Alert.title,
-        msg: Alert.msg,
-        showClose: Alert.showClose,
-        timeout: Alert.timeout,
-        theme: Alert.theme,
-        onAdd: (toast: ToastData) => {
-            console.log('Toast ' + toast.id + ' has been added!');
-        },
-        onRemove: function(toast: ToastData) {
-            console.log('Toast ' + toast.id + ' has been removed!');
-        }
-    };
+//   newToast(Alert):void {
+//     console.log("HELLO GOT IN HERE:");
+//     let toastOptions: ToastOptions = {
+//         title: Alert.title,
+//         msg: Alert.msg,
+//         showClose: Alert.showClose,
+//         timeout: Alert.timeout,
+//         theme: Alert.theme,
+//         onAdd: (toast: ToastData) => {
+//             console.log('Toast ' + toast.id + ' has been added!');
+//         },
+//         onRemove: function(toast: ToastData) {
+//             console.log('Toast ' + toast.id + ' has been removed!');
+//         }
+//     };
 
-    if(Alert.success){
-      this.toastyService.success(toastOptions);
-      return;
-    }
-    this.toastyService.error(toastOptions);
+//     if(Alert.success){
+//       this.toastyService.success(toastOptions);
+//       return;
+//     }
+//     this.toastyService.error(toastOptions);
 
-}
+// }
   ngOnInit() {
 
   }
@@ -78,7 +80,9 @@ export class ContactMeComponent implements OnInit {
         theme:'material',
         success: true
       }
-      this.newToast(Alert);
+
+      console.log("A:LERT:", Alert)
+      this.MessagesAlert.newToast(Alert);
       this.formReset();
       return;
     },
@@ -92,7 +96,7 @@ export class ContactMeComponent implements OnInit {
         theme:'material',
         success: false
       }
-      this.newToast(Alert);
+      this.MessagesAlert.newToast(Alert);
       console.log(err);
     });
     

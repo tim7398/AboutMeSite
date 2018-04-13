@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark orange">    <!-- Navbar brand -->
-  <logo><a class="navbar-brand" href="#">Tim Qin</a></logo>
+  <logo><a class="navbar-brand" (click)="navigation('')">Tim Qin</a></logo>
 
   <!-- Collapsible content -->
   <links>
@@ -14,8 +14,8 @@
             <a dropdownToggle mdbRippleRadius  class="nav-link waves-light" mdbRippleRadius>
            About Me <span class="caret"></span></a>
            <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" mdbRippleRadius href="/aboutme">Who Am I</a>
-            <a class="dropdown-item waves-light" mdbRippleRadius href="#">Travels</a>
+            <a class="dropdown-item waves-light" mdbRippleRadius (click)="navigation('aboutme')">Who Am I</a>
+            <a class="dropdown-item waves-light" mdbRippleRadius (click)="navigation('')">Travels</a>
         </div>
     </li>
           <!-- Dropdown -->
@@ -23,14 +23,14 @@
               <a dropdownToggle mdbRippleRadius  class="nav-link waves-light" mdbRippleRadius>
               Experience<span class="caret"></span></a>
               <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-                  <a class="dropdown-item waves-light" mdbRippleRadius href="#">Employment History</a>
-                  <a class="dropdown-item waves-light" mdbRippleRadius href="/pastproject">Past Projects</a>
+                  <a class="dropdown-item waves-light" mdbRippleRadius (click)="navigation('')">Employment History</a>
+                  <a class="dropdown-item waves-light" mdbRippleRadius (click)="navigation('pastproject')">Past Projects</a>
                   <div class="divider dropdown-divider"></div>
-                  <a class="dropdown-item waves-light" mdbRippleRadius href="#">GitHub</a>
+                  <a class="dropdown-item waves-light" mdbRippleRadius (click)="navigation('')">GitHub</a>
               </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-light" mdbRippleRadius href="/contactme"> Contact Me</a>
+            <a class="nav-link waves-light" mdbRippleRadius (click)="navigation('contactme')"> Contact Me</a>
         </li>
 
       </ul>
@@ -38,8 +38,8 @@
 
       <!-- Search form -->
       
-           <lable *ngIf="!isLoggedIn"><a class="nav-link waves-light" mdbRippleRadius href="/login"> Login </a></lable> 
-           <lable *ngIf="isLoggedIn"><a class="nav-link waves-light" mdbRippleRadius href="/"> Logout </a></lable> 
+           <lable *ngIf="!userService.getIsLoggedIn()"><a class="nav-link waves-light" mdbRippleRadius (click)="navigation('login')"> Login </a></lable> 
+           <lable *ngIf="userService.getIsLoggedIn()">Hi {{this.userService.getUserInfo().username}}<a class="nav-link waves-light" mdbRippleRadius (click)="logout()"> Logout </a></lable> 
        
   </links>
   <!-- Collapsible content -->

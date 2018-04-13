@@ -12,6 +12,10 @@ import { AboutmeComponent } from './aboutme/aboutme.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PastProjectComponent } from './past-project/past-project.component';
 import { LoginComponent } from './login/login.component';
+import {UserService} from './user.service';
+import {AuthGuard} from './auth.guard';
+import {MessageAlert} from './util/toast';
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contactme', component: ContactMeComponent },
@@ -47,7 +51,7 @@ const appRoutes: Routes = [
   exports:[
     BrowserModule, ToastyModule, MDBBootstrapModule
   ],
-  providers: [],
+  providers: [UserService,AuthGuard, MessageAlert],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

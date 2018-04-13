@@ -11,10 +11,7 @@ export class PastProjectComponent implements OnInit {
   data:any;
   ngOnInit() {
     this.getData();
-  }
-  test(test){
-    console.log("yo", this.data.Items.length);
-    console.log("hi:", test);
+    console.log("yo");
   }
   getData (){
     const headers = new Headers();
