@@ -15,6 +15,10 @@ import { LoginComponent } from './login/login.component';
 import {UserService} from './user.service';
 import {AuthGuard} from './auth.guard';
 import {MessageAlert} from './util/toast';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material';
+import { ProjectModalComponent } from './project-modal/project-modal.component';
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,11 +36,14 @@ const appRoutes: Routes = [
     HomeComponent,
     AboutmeComponent,
     PastProjectComponent,
-    LoginComponent
+    LoginComponent,
+    ProjectModalComponent,
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpModule,    
+    NoopAnimationsModule,
+    MatDialogModule,
     ToastyModule.forRoot(),
     FormsModule,
     NgbModule,
@@ -47,9 +54,12 @@ const appRoutes: Routes = [
       { enableTracing: false } // <-- debugging purposes only
     )
   ],
+  entryComponents: [
+    ProjectModalComponent,
+],
   schemas:[NO_ERRORS_SCHEMA],
   exports:[
-    BrowserModule, ToastyModule, MDBBootstrapModule
+    BrowserModule, ToastyModule, MDBBootstrapModule,ProjectModalComponent
   ],
   providers: [UserService,AuthGuard, MessageAlert],
   bootstrap: [AppComponent]

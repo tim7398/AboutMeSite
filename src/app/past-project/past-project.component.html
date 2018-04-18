@@ -1,27 +1,31 @@
-
-
 <container>
-<!-- <div class = "projectList" *ngIf="data !== undefined"> -->
-    <div class = "projectList" >
+  <div class="projectList" *ngIf="data !== undefined">
+    <div class="projectList">
 
-  <row>
-    <div class="df col-lg-12">
-      <button type ="submit" id="uploadProjectButton" class="btn orange waves-light" mdbRippleRadius> Upload <i class="fa fa-upload
-        ml-1"></i></button>
-    </div>
-  </row>
+      
+        <div class="uploadButtonRow row col-lg-12">
+          <button type="submit" id="uploadProjectButton"(click)="uploadModal()" class="btn orange waves-light" mdbRippleRadius> Upload
+            <i class="fa fa-upload
+        ml-1"></i>
+          </button>
+        </div>
+    
 
-<div *ngFor="let object of data.Items">
-  <div class="card">
-      <div class="card-block">
-        <h4 class="card-title">{{object.title}}</h4>
-        <h2 class="card-text">{{object.date}}</h2>
-        <img class="card-img-top" src="https://www.cartoonbrew.com/wp-content/uploads/2014/07/overthegardenwall-promo.jpg" alt="Card image cap">
-        <p class="card-text">{{object.body}}</p>
+      
+        <div class = "row"*ngFor="let object of reverseData.Items">
+          <div class="card projectData">
+            <div class="card-block">
+              <h4 class="card-title">{{object.title}}</h4>
+              <h2 class="card-text">{{object.date}}</h2>
+              <img class="card-img-top" src="https://www.cartoonbrew.com/wp-content/uploads/2014/07/overthegardenwall-promo.jpg" alt="Card image cap">
+              <p class="card-text">{{object.body}}</p>
+            </div>
+          </div>
+        
       </div>
+      
     </div>
-</div>
-</div>
+  </div>
 
 </container>
 
@@ -29,4 +33,3 @@
 
   <h2>No Content Found  </h2>
 </div> -->
-

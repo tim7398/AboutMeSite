@@ -20,14 +20,23 @@
 }
 
 #uploadProjectButton{
-    float:right;
+    // hacky workaround cause float:right doesnt work
+    margin-left:80%;
+    margin-right:5%;
     
 }
-.df{
-    background-color:black;
+.uploadButtonRow{
     position:relative;
-    top:5em;
-    width:75%;
-    margin-left:10%;
-    margin-right:10%;
+    top:3em;
+    width:60%;
+    margin-left:20%;
+    margin-right:20%;
+    margin-bottom:2em;
+    border-bottom: 1px solid gray;
+
+}
+
+.projectData{
+    top:3em;
+    margin-bottom:1em;
 }
