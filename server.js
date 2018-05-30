@@ -1,9 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-
+const session = require('express-session');
 const api = require('./server/routes/api');
-
 const port = 3010;
 
 const app = express();
@@ -14,6 +13,13 @@ app.use(express.static(path.join(__dirname, 'dist')));
 //parsing the post data that comes in
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+
+app.use(session({
+    secret: "thisisawebsitesecretduh", //used to validate that the cookie has not been tampered with
+    resave:false, // 
+    saveUninitialized:true, // saves new sessions
+    rolling:true // active as long as there are requests made to the server 
+}))
 
 //api route
 app.use('/api',api);

@@ -24,7 +24,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contactme', component: ContactMeComponent },
   { path: 'aboutme', component: AboutmeComponent},
-  {path:'pastproject', component:PastProjectComponent},
+  {path:'pastproject', component:PastProjectComponent,canActivate: [AuthGuard]},
   {path:'login', component:LoginComponent}
 
 ];

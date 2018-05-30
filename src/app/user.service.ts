@@ -27,6 +27,7 @@ export class UserService {
   //set the log out to be true
    setLoggedOut():void{
     this.isloggedIn = false;
+    this.clearUserInfo();
   }
 
   //set the userinfo

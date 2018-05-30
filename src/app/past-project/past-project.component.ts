@@ -9,12 +9,16 @@ import {ProjectModalComponent} from '../project-modal/project-modal.component';
   templateUrl: './past-project.component.html',
   styleUrls: ['./past-project.component.scss']
 })
+
 export class PastProjectComponent implements OnInit {
   data:any;
   reverseData:any;
-  
   constructor( private http:Http, private modalService:MatDialog) { 
-    
+  }
+
+  canActivate(){
+    console.log("come in canActivate");
+    return false;
   }
 
   uploadModal(){
@@ -27,6 +31,7 @@ export class PastProjectComponent implements OnInit {
       id: 1,
       title: 'Angular For Beginners'
   };
+  
   dialogConfig.height='400px';
   dialogConfig.width = '600px';
   

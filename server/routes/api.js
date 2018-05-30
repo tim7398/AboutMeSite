@@ -3,7 +3,7 @@ const router = express.Router();
 const emailService = require('../util/email');
 const AWS = require("aws-sdk");
 const projectGet = require("../getData/projectGet");
-const projectPost = require("../getData/projectPost")
+const projectPost = require("../getData/projectPost");
 
 // set authorization.
 AWS.config.update({
@@ -45,6 +45,16 @@ router.post('/postprojects', function(req, res){
     });
 });
 
+
+//authenticate route
+router.post('/authenticate',function(req,res){
+    console.log("Authentication:", req.session.userName)
+});
+
+
+
+
+
 //verify the user
 router.post('/userverify', function(req, res){
     let userInfo = {
@@ -55,10 +65,13 @@ router.post('/userverify', function(req, res){
         email: req.body.email
     };
     console.log(userInfo.register);
+
+    //register the user
     if(userInfo.register){
         projectGet.RegisterUser(AWS, userInfo).then(
             function(data){
-                console.log("The datas:", data);
+                req.session.userName = userInfo.username;
+                req.session.pass = userInfo.password;
                 res.status(201);
                 res.send(data);
             },
@@ -73,6 +86,11 @@ router.post('/userverify', function(req, res){
         projectGet.IsAuthenticated(AWS, userInfo).then(
             function(data){
                 console.log("is this verified:", data);
+                if(data){
+                    req.session.userName = userInfo.username;
+                    req.session.pass = userInfo.password;
+                }
+
                 res.status(201);
                 res.send(data);
             },

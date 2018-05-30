@@ -143,6 +143,7 @@ export class LoginComponent implements OnInit {
 
         this.MessageAlert.newToast(Alert);
         this.userService.setLoggedIn();
+        this.userService.setUserInfo(this.userInfo);
         this.router.navigate(['']);
         return;
       },
