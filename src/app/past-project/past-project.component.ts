@@ -16,11 +16,6 @@ export class PastProjectComponent implements OnInit {
   constructor( private http:Http, private modalService:MatDialog) { 
   }
 
-  canActivate(){
-    console.log("come in canActivate");
-    return false;
-  }
-
   uploadModal(){
     const dialogConfig = new MatDialogConfig();
 

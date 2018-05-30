@@ -20,6 +20,10 @@ export class AuthGuard implements CanActivate {
     const requestOptions = new RequestOptions({headers: headers});
     this.http.post('/api/authenticate',requestOptions).subscribe((data)=>{
       console.log("i did it:", data);
+      if(data){
+        this.user.setLoggedIn();
+      }
+      
     }),
     (error=>{
       console.log("error Authenticating:", error);

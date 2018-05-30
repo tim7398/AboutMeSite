@@ -48,7 +48,22 @@ router.post('/postprojects', function(req, res){
 
 //authenticate route
 router.post('/authenticate',function(req,res){
-    console.log("Authentication:", req.session.userName)
+    userInfo = {
+        username:req.session.userName,
+        password:req.session.pass
+    };
+    projectGet.IsAuthenticated(AWS, userInfo).then(
+        function(data){
+            console.log("Authe:", data)
+            res.status(201);
+            res.send(data);
+        },
+        function(error){
+            console.log("I got an error:", error);
+            res.status(400);
+            res.send(error);
+        }
+    )
 });
 
 
