@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UserService {
 
-  private isloggedIn:boolean;
+  private isloggedIn:boolean = false;
   private userInfo;
 
   //default not logged in
@@ -46,6 +46,8 @@ export class UserService {
       company: userInfo.company,
       email: userInfo.email
     };
+
+    console.log("userinfo:", this.userInfo)
 
   }
    clearUserInfo():void{

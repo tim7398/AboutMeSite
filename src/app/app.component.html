@@ -1,5 +1,7 @@
+<img *ngIf= "auth.loading" src="../assets/qWp.gif" />
+
 <!--The content below is only a placeholder and can be replaced.-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark orange">    <!-- Navbar brand -->
+<mdb-navbar *ngIf="!auth.loading" SideClass="navbar navbar-expand-lg navbar-dark orange">    <!-- Navbar brand -->
   <logo><a class="navbar-brand" (click)="navigation('')">Tim Qin</a></logo>
 
   <!-- Collapsible content -->
@@ -46,6 +48,7 @@
 
 </mdb-navbar>
 
+
 <footer class="page-footer center-on-small-only">
         <div class="footer-copyright">
                 <div class="container-fluid">
@@ -54,4 +57,4 @@
             </div>
 </footer>
 
-<router-outlet></router-outlet>
+<router-outlet  (activate)="AuthenticateEachUser()"></router-outlet>

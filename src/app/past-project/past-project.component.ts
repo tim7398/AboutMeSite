@@ -3,7 +3,7 @@ import {Http, Headers,RequestOptions} from "@angular/http";
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {ProjectModalComponent} from '../project-modal/project-modal.component';
-
+import { AuthGuard } from '../auth.guard';
 @Component({
   selector: 'app-past-project',
   templateUrl: './past-project.component.html',
@@ -13,7 +13,7 @@ import {ProjectModalComponent} from '../project-modal/project-modal.component';
 export class PastProjectComponent implements OnInit {
   data:any;
   reverseData:any;
-  constructor( private http:Http, private modalService:MatDialog) { 
+  constructor(private auth:AuthGuard, private http:Http, private modalService:MatDialog) { 
   }
 
   uploadModal(){

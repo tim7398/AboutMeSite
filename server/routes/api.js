@@ -32,9 +32,18 @@ router.get('/getprojects', function(req, res){
         }
     )
 });
-
+router.get('/logout',function(req,res){
+    if(req.session.pass !== undefined &&req.session.pass !== null){
+        req.session.destroy(function(err){
+            if(err !== null && err !== undefined){
+                res.status(400);
+                res.send(err);
+              }
+              res.redirect('/');
+        });
+    }
+});
 router.post('/postprojects', function(req, res){
-    console.log("whatdafdsf")
     projectPost.PostProject().then(function(isPosted){
         res.status(201);
         res.send(isPosted)
@@ -54,14 +63,23 @@ router.post('/authenticate',function(req,res){
     };
     projectGet.IsAuthenticated(AWS, userInfo).then(
         function(data){
-            console.log("Authe:", data)
+            info={
+                username: req.session.userName,
+                email: req.session.email,
+                company: req.session.company,
+                auth: data
+            }
+            console.log("Authe:", info.auth)
             res.status(201);
-            res.send(data);
+            res.send(info);
         },
         function(error){
             console.log("I got an error:", error);
-            res.status(400);
-            res.send(error);
+            info={
+                auth:false
+            }
+            res.status(401);
+            res.send(info);
         }
     )
 });
@@ -87,6 +105,8 @@ router.post('/userverify', function(req, res){
             function(data){
                 req.session.userName = userInfo.username;
                 req.session.pass = userInfo.password;
+                req.session.email = userInfo.email;
+                req.session.company = userInfo.company;
                 res.status(201);
                 res.send(data);
             },
@@ -104,6 +124,7 @@ router.post('/userverify', function(req, res){
                 if(data){
                     req.session.userName = userInfo.username;
                     req.session.pass = userInfo.password;
+                    req.session.email = userInfo.email;
                 }
 
                 res.status(201);
