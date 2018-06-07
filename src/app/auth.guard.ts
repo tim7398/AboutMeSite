@@ -12,18 +12,16 @@ export class AuthGuard implements CanActivate {
 
   }
   async canActivate(next: ActivatedRouteSnapshot,state: RouterStateSnapshot) {
-    console.log("got in heree")
     let isAuth = await this.Authenticate();
     if(isAuth.auth){
-      console.log("in auth")
         this.user.setLoggedIn();
-        this.user.setUserInfo(isAuth)
+        this.user.setUserInfo(isAuth);
         return true;
     }
       
     this.user.setLoggedOut();
     this.user.clearUserInfo();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
 
     return false;
      
@@ -32,7 +30,14 @@ export class AuthGuard implements CanActivate {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json; charset=utf-8');
     const requestOptions = new RequestOptions({headers: headers});    
-     let response =  await this.http.post('/api/authenticate',requestOptions).toPromise();
-      return response.json();
+     let response = await this.http.post('/api/authenticate',requestOptions).toPromise()
+     .then(res=>{return res.json()})
+     .catch(err=>
+      {
+        response = {auth:false};
+        return response;
+
+      });
+       return response;
   }
 }
